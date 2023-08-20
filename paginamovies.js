@@ -13,7 +13,7 @@ class Movie2 {
         let targetElement = document.getElementById(Id);
         let movieInfo = document.createElement("div");
 
-        let listActors = this.actors.join(", "); // Unir los actores en un solo string
+        let listActors = this.actors.join(", "); // unir actores en un string
         movieInfo.innerHTML = `
             <img src="${this.photo}" alt="${this.title}" width="100"> <br>
             <strong>Title:</strong> ${this.title}<br>
@@ -28,7 +28,7 @@ class Movie2 {
     }
 }
 
-// Crear instancias de películas y mostrar en la página
+// instancias de películas y mostrar en  página
 let movie1 = new Movie2("todoalavezentodaspartes.jpg", "Todo a la vez en todas partes", 2022, ["Michelle Yeoh", "Ke Huy Quan"], "Daniel Kwan", "Daniel Kwan", "Comedia Dramática");
 let movie2 = new Movie2("pinocho.jpg", "Pinocchio", 2022, ["Ron Perlman", "David Bradley"], "Guillermo del Toro", "Gris Grimly", "Animación");
 let movie3 = new Movie2("blackwidow.jpg", "Black Widow", 2021, ["Scarlett Johansson", "David Harbour"], "Cate Shortland", "Jac Schaeffer", "Ciencia Ficción");
@@ -43,55 +43,43 @@ movie4.mostrarEnPagina("aftersuninfo");
 let movies = [movie1, movie2, movie3, movie4];
 
 
-//formulario
-document.addEventListener("DOMContentLoaded", function () {
-    let form = document.querySelector("form");
-    let nuevapeli = document.getElementById("nuevapeli");
+// variables para que form sea el formulario y tarjetascontainer sea el contenedorde las tarjetas
+let form = document.getElementById("form");
+let tarjetasContainer = document.getElementById("contenedortarjetas");
 
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
+// evento formulario al clicar boton
+form.addEventListener("submit", function (event) {
+    event.preventDefault(); // para que no se recargue la pagina
 
-        let foto = document.getElementById("foto").value;
-        let title = document.getElementById("title").value;
-        let released = document.getElementById("released").value;
-        let actor = document.getElementById("actor").value;
-        let director = document.getElementById("director").value;
-        let writer = document.getElementById("writer").value;
-        let genre = document.getElementById("genre").value;
-        
+    // obtenr los valores q hay en el formulario
+    let foto = document.getElementById("foto").value;
+    let title = document.getElementById("title").value;
+    let released = document.getElementById("released").value;
+    let actor = document.getElementById("actor").value;
+    let director = document.getElementById("director").value;
+    let writer = document.getElementById("writer").value;
+    let genre = document.getElementById("genre").value;
+    
 
-        let card = createCard(title, released, actor, director, writer, genre, foto);
-        nuevapeli.appendChild(card);
+    // crear la nueva tarjeta
+    let nuevaTarjeta = document.createElement("div");
+    nuevaTarjeta.classList.add("card", "m-1");
+    nuevaTarjeta.style.width = "16rem";
+    nuevaTarjeta.innerHTML = `
+        <div class="card-body">
+            <img src="${foto}" class="card-img-top" alt="...">
+            <p class="card-text"><strong>Title: </strong>${title}</p>
+            <p class="card-text"><strong>Release year: </strong>${released}</p>
+            <p class="card-text"><strong>Actors: </strong>${actor}</p>
+            <p class="card-text"><strong>Director: </strong>${director}</p>
+            <p class="card-text"><strong>Writer: </strong>${writer}</p>
+            <p class="card-text"><strong>Genre: </strong>${genre}</p>
+        </div>
+    `; //strong es para que los labels esten en negrita
 
+    // añadir la tarjeta al contenedor que tiene las tarjetas
+    tarjetasContainer.appendChild(nuevaTarjeta);
 
-        form.reset();
-    });
-
-    function createCard(title, released, actor, director, writer, genre, foto) {
-        let card = document.createElement("div");
-        card.className = "card m-1";
-        card.style.width = "12rem";
-
-        let cardBody = document.createElement("div");
-        cardBody.className = "card-body";
-
-        let cardText = document.createElement("div");
-        cardText.className = "card-text";
-        cardText.innerHTML = `
-            <img src="${foto}" class="img-fluid" style="max-width: 100px;">    
-            <p class="card-text">Title: ${title}</p>
-            <p class="card-text">Released: ${released}</p>
-            <p class="card-text">Actors: ${actor}</p>
-            <p class="card-text">Director: ${director}</p>
-            <p class="card-text">Writer: ${writer}</p>
-            <p class="card-text">Genre: ${genre}</p>
-            
-        `;
-
-        cardBody.appendChild(cardText);
-        card.appendChild(cardBody);
-
-
-        return card;
-    }
+    // limpiar el formulario despues de clicar boton
+    form.reset();
 });

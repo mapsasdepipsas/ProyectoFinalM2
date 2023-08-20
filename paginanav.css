@@ -4,36 +4,49 @@
     box-sizing: border-box;
   }
 
-.padre{
+body{
     font-family: "Arial Black", sans-serif;
-    height: 100vh;
-    margin: 0px;
-    padding: 0px;
     background-image: url(top-view-movie-reels-with-copy-space.jpg);
     background-size: cover;
     background-attachment: fixed;
     
 }
-
+    
     .nav{
-        background-color: rgba(87, 141, 125, 0.856);
+        background-color:  rgba(87, 141, 125, 0.911);
         display: flex;
-        justify-content: space-around;
-        padding: 8vh;
+        justify-content: space-between;
+        padding: 7vh;
     }
+
+        .underline-reveal {
+            position: relative;
+            }
+            
+            .underline-reveal::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            background-color: #fff;
+            bottom: -1px;
+            left: 0;
+            transition: width 0.3s ease-in-out;
+            }
+            
+            .underline-reveal:hover::before {
+            width: 100%;
+            }
 
         .nav a{
             text-decoration: none;
             color: white;
-            display: flex;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 2.5vh;
-            margin-left: 2vh;
         }
 
         .nav img{
             width: 5vh;
-            margin-right: 170vh;
         }
 
     .textos{
@@ -49,3 +62,30 @@
         .texto2{
             margin: 10px;
         }
+
+
+/* pantallas de 0 a 250px */
+@media screen and (max-width: 360px) {
+    .nav img {
+        display: none;
+    }
+
+    .nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav a {
+        margin: 5px 0;
+    }
+
+
+}
+
+/*de 0 a 840*/
+@media screen and (max-width: 840px) {
+    .textos{
+        color: rgb(99, 68, 141);
+        background-color:rgba(123, 202, 180, 0.616);
+    }
+}

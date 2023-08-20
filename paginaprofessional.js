@@ -49,7 +49,7 @@ let director1 = new Professional2("guillermodeltoro.png", "Guillermo Del Toro", 
 let writer1 = new Professional2("gretagerwig.png", "Greta Gerwig", 40, false, "American", 0, "Writer");
 
 // mostrar en pagina
-actor1.mostrarEnPagina("ronperlmaninfo");
-actor2.mostrarEnPagina("davidbradleyinfo");
+actor1.mostrarEnPagina("jennafischerinfo");
+actor2.mostrarEnPagina("margotrobbieinfo");
 director1.mostrarEnPagina("guillermodeltoroinfo");
-writer1.mostrarEnPagina("grisgrimlyinfo");
+writer1.mostrarEnPagina("gretagerwiginfo");

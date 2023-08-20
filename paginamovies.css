@@ -4,65 +4,113 @@
     box-sizing: border-box;
   }
 
-.nuevapeli{
-display: none;
-}
 
-.padre{
-    font-family: "Arial Black", sans-serif;
-    height: 100vh;
-    margin: 0px;
-    padding: 0px;
+  body {
+    font-family: Arial, sans-serif;
     background-image: url(3896.jpg);
     background-size: cover;
     background-attachment: fixed;
-    min-height: 300vh;
-    
-}
+    }
 
     .nav{
-        background-color: rgba(247, 144, 224, 0.856);
+        background-color: rgba(224, 165, 212, 0.911);
         display: flex;
-        justify-content: space-around;
-        padding: 8vh;
+        justify-content:space-between;
+        padding: 7vh;
     }
 
         .nav a{
             text-decoration: none;
             color: white;
-            display: flex;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 2.5vh;
         }
 
         .nav img{
             width: 5vh;
-            margin-right: 150vh;
         }
 
-        .card-text{
-            font-family: Arial, Helvetica, sans-serif;
-        }
-    
-    
-        .card:hover {
-            transform: scale(1.05); 
-            transition: transform 0.3s ease; 
-        }
+            .underline-reveal {
+                position: relative;
+            }
+            
+            .underline-reveal::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            background-color: #fff;
+            bottom: 1px;
+            left: 0;
+            transition: width 0.3s ease-in-out;
+            }
+            
+            .underline-reveal:hover::before {
+            width: 100%;
+            }
 
-    .form-background{
-        background-color: rgba(240, 240, 240, 0.9); /* Cambia los valores según tu preferencia */
-        padding: 20px;
+    .card:hover {
+        transform: scale(1.05); 
+        transition: transform 0.3s ease; 
+    }
+
+    .tarjetas img{
+        width: 100%;
+    }
+
+
+    .form{
+        background-color: rgba(240, 240, 240, 0.9);
+        padding: 10vh;
         border-radius: 10px;
         display: flex;
         flex-direction: column;
-        margin-top: 20vh;
+        margin-top: 10vh;
         font-family: Arial, Helvetica, sans-serif;
-        font-weight: bold;
+        margin-bottom: 5vh;
     }
 
-    #boton{
-        margin-bottom: 40vh;
-        width: 20vh;
-        font-weight: bold;
+        #boton{
+            margin-bottom: 8vh;
+            margin-top: 5vh;
+            width: 30vh;
+            height: 10vh;
+            background-color: burlywood;
+            align-self: center;
+            transition: filter 0.3s;
+        }
+
+        .btn:hover {
+            filter: brightness(0.9); 
+        }
+
+    .contenedortarjetas {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+        gap: 5px;
+        margin: 20px;
     }
+        .card img{
+            max-width: 100%;
+        }
+
+        .card p{
+            margin-bottom: 0vh;
+        }
+
+
+/* pantallas de 0 a 250px */
+@media screen and (max-width: 360px) {
+    .nav img {
+        display: none;
+    }
+
+    .nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav a {
+        margin: 5px 0;
+    }
+}
